@@ -2,14 +2,14 @@ group 'com.tfliteflutter.tflite_flutter_helper'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.3.50'
+    ext.kotlin_version = '1.8.22' // ✅ Keep this consistent with your main application
     repositories {
         google()
         jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.0'
+        classpath 'com.android.tools.build:gradle:7.2.0'  // ✅ Update Android Gradle Plugin to 7.2.0
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -30,8 +30,13 @@ android {
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
+
     defaultConfig {
         minSdkVersion 16
+    }
+
+    lintOptions {
+        abortOnError false // Optional: helps avoid lint breakages in libraries
     }
 }
 
