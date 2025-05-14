@@ -2,14 +2,14 @@ group 'com.tfliteflutter.tflite_flutter_helper'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.8.22' // ✅ Keep this consistent with your main application
+    ext.kotlin_version = '1.8.22' // Keep this the same as your main app's Kotlin version
     repositories {
         google()
-        jcenter()
+        mavenCentral() // jcenter is deprecated, so use mavenCentral
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.0'  // ✅ Update Android Gradle Plugin to 7.2.0
+        classpath 'com.android.tools.build:gradle:7.2.0'  // Use an updated AGP version
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -17,7 +17,7 @@ buildscript {
 rootProject.allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral() // Using mavenCentral instead of jcenter
     }
 }
 
@@ -36,7 +36,7 @@ android {
     }
 
     lintOptions {
-        abortOnError false // Optional: helps avoid lint breakages in libraries
+        abortOnError false  // Optional: helps avoid lint breakages in libraries
     }
 }
 
